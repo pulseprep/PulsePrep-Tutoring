@@ -1,1 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PulsePrep Tutoring — GCSE & A‑Level Science & Maths</title>
+  <meta name="description" content="1:1 GCSE & A‑Level tutoring for Biology, Chemistry, Physics and Maths — delivered by a UK medical student. Structured lessons, exam techniques and progress tracking." />
+  <meta property="og:title" content="PulsePrep Tutoring" />
+  <meta property="og:description" content="GCSE & A‑Level Science & Maths tutoring by a UK medical student." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0fb5b8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0e14;
+      --card:#0f1420;
+      --muted:#94a3b8;
+      --text:#e9eef7;
+      --brand:#0fb5b8;
+      --brand-2:#38d7d9;
+      --ring:rgba(56,215,217,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:linear-gradient(180deg,#0b0e14 0%,#0b0e14 50%,#0f1420 100%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--brand);color:#041014;padding:.85rem 1.1rem;border-radius:14px;font-weight:700;border:1px solid #0da2a4;box-shadow:0 8px 30px rgba(15,181,184,.25);transition:.2s all}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,181,184,.33)}
+    .btn.ghost{background:transparent;border:1px solid #273143;color:var(--text)}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #223046;background:#0e1421;padding:.35rem .6rem;border-radius:999px;color:var(--muted);font-weight:600;font-size:.85rem}
+    .badge .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--brand)}
+    /* Nav */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,14,20,.7);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #172035}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+    .logo .mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg,var(--brand),var(--brand-2),#7cf4f5);box-shadow:0 0 20px rgba(56,215,217,.35) inset, 0 0 30px rgba(56,215,217,.15)}
+    nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    nav a{padding:.6rem .8rem;border-radius:10px;color:#cbd5e1}
+    nav a:hover{background:#121a2b}
+    .nav-cta{display:flex;gap:.6rem;align-items:center}
+    .menu-btn{display:none}
+    @media (max-width: 860px){
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    /* Hero */
+    .hero{padding:4rem 0 3rem;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+    .hero h1{font-size: clamp(2rem, 3.8vw, 3.2rem);line-height:1.1;margin:.7rem 0 1rem}
+    .lead{color:#c6d0e3;font-size:1.05rem}
+    .hero-card{background:radial-gradient(1000px 400px at -20% -30%, rgba(56,215,217,.12), transparent 60%), var(--card);border:1px solid #171f32;border-radius:20px;padding:1.2rem}
+    .hero-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0 1.2rem}
+    .hero-points div{background:#0c1526;border:1px solid #172135;padding:.75rem .8rem;border-radius:12px;color:#c7d2fe}
+    .statbar{display:flex;gap:1rem;margin-top:1.2rem;flex-wrap:wrap}
+    .stat{background:#0c1526;border:1px solid #142036;padding:.65rem .8rem;border-radius:12px}
+    .vector{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:40px;background:radial-gradient(65% 65% at 50% 50%, rgba(56,215,217,.18), transparent 70%);filter:blur(8px)}
+    @media (max-width: 860px){
+      .hero{padding:2.6rem 0 1.2rem}
+      .hero-grid{grid-template-columns:1fr}
+    }
+    /* Sections */
+    section{padding:2.5rem 0}
+    .section-title{font-size:1.6rem;margin:0 0 .6rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width: 900px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #172135;border-radius:16px;padding:1rem}
+    .chip{display:inline-flex;align-items:center;border:1px solid #21314b;background:#0a1222;color:#caeaff;padding:.4rem .6rem;border-radius:999px;font-size:.85rem;margin:.25rem}
+    .price{font-size:2rem;font-weight:800}
+    .strike{color:#7a8aa7;text-decoration:line-through;margin-left:.4rem;font-size:.95rem;font-weight:600}
+    .list{margin:.8rem 0 0;padding:0 0 0 1rem;color:#cbd5e1}
+    /* Testimonials */
+    .testimonial{background:linear-gradient(180deg,#101726,#0f1420);border:1px solid #18243c;border-radius:16px;padding:1rem}
+    .testimonial .name{font-weight:700}
+    /* FAQ */
+    .faq-item{border:1px solid #1a2942;border-radius:14px;margin:.6rem 0;background:#0d1425}
+    .faq-q{cursor:pointer;padding:1rem;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+    .faq-a{display:none;padding:0 1rem 1rem;color:#cbd5e1}
+    /* Footer */
+    footer{border-top:1px solid #16223a;padding:1.4rem 0;color:#9fb2d0}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem}
+    @media (max-width: 860px){.footer-grid{grid-template-columns:1fr}}
+    /* Contact */
+    .field{display:flex;flex-direction:column;gap:.4rem;margin:.7rem 0}
+    input,select,textarea{background:#0b1323;border:1px solid #1b2943;border-radius:12px;color:#e4eefb;padding:.8rem}
+    input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 5px var(--ring);border-color:#204a59}
+    .inline{display:flex;gap:.7rem;flex-wrap:wrap}
+    /* Ribbon */
+    .ribbon{position:relative}
+    .ribbon::after{content:"NEW";position:absolute;top:-10px;right:-10px;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#041014;font-weight:800;border-radius:999px;padding:.2rem .5rem;font-size:.7rem;box-shadow:0 6px 20px rgba(15,181,184,.35)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="PulsePrep Tutoring Home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>PulsePrep <span style="opacity:.8">Tutoring</span></span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#subjects">Subjects</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn ghost" href="mailto:hello@pulseprep.co.uk">Email</a>
+        <a class="btn" href="#contact">Book a Free Call</a>
+        <button class="btn ghost menu-btn" aria-label="Open menu" onclick="toggleMenu()">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="vector" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <span class="badge"><span class="dot"></span> 1:1 Online • UK Curriculum • Progress Tracking</span>
+          <h1>GCSE & A‑Level Science and Maths tutoring — by a UK medical student</h1>
+          <p class="lead">Clear explanations. Exam‑focused lessons. Weekly feedback for parents. Your grades, accelerated.</p>
+          <div class="hero-points">
+            <div>Biology • Chemistry • Physics • Maths</div>
+            <div>All exam boards: AQA, OCR, Edexcel</div>
+            <div>Free 15‑minute intro call</div>
+            <div>Homework & resources included</div>
+          </div>
+          <div class="statbar">
+            <div class="stat">Avg. uplift: +2 grades</div>
+            <div class="stat">99% lesson attendance</div>
+            <div class="stat">Flexible evenings & weekends</div>
+          </div>
+          <div style="margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn" href="#contact">Get started</a>
+            <a class="btn ghost" href="#subjects">See subjects</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card ribbon">
+            <h3 style="margin:.2rem 0 1rem">Free Study Audit</h3>
+            <p class="muted" style="margin:0 0 .8rem">Send a recent paper or topic list — get a personalised plan and first‑week resources.</p>
+            <ul class="list">
+              <li>Topic diagnosis & score breakdown</li>
+              <li>Weekly schedule tailored around school</li>
+              <li>Revision kit: checklists & past‑paper sets</li>
+            </ul>
+            <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
+              <a class="btn" href="#contact">Claim audit</a>
+              <a class="btn ghost" href="https://wa.me/44XXXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="subjects">
+      <div class="container">
+        <h2 class="section-title">Subjects & Levels</h2>
+        <p class="muted">All major UK exam boards covered. Foundation and Higher tiers supported for GCSE.</p>
+        <div class="grid grid-3" style="margin-top:1rem">
+          <div class="card">
+            <h3>GCSE</h3>
+            <div>
+              <span class="chip">Biology</span>
+              <span class="chip">Chemistry</span>
+              <span class="chip">Physics</span>
+              <span class="chip">Combined Science</span>
+              <span class="chip">Maths</span>
+            </div>
+            <p class="muted">Exam boards: AQA • Edexcel • OCR</p>
+          </div>
+          <div class="card">
+            <h3>A‑Level</h3>
+            <div>
+              <span class="chip">Biology</span>
+              <span class="chip">Chemistry</span>
+              <span class="chip">Physics</span>
+              <span class="chip">Maths</span>
+            </div>
+            <p class="muted">Exam boards: AQA • Edexcel • OCR</p>
+          </div>
+          <div class="card">
+            <h3>Extras</h3>
+            <div>
+              <span class="chip">Study Skills</span>
+              <span class="chip">UCAT Basics</span>
+              <span class="chip">Personal Statements</span>
+              <span class="chip">EPQ Coaching</span>
+            </div>
+            <p class="muted">Perfect for students aiming for medicine or STEM degrees.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="container">
+        <h2 class="section-title">Packages & Pricing</h2>
+        <p class="muted">Simple pricing. No contracts. Discounted bundles available.</p>
+        <div class="grid grid-3" style="margin-top:1rem">
+          <div class="card">
+            <h3>Starter</h3>
+            <p class="muted">1× 60‑min / week</p>
+            <p><span class="price">£30</span><span class="strike">£35</span> per lesson</p>
+            <ul class="list">
+              <li>Custom lesson notes</li>
+              <li>Homework & marking</li>
+              <li>Email support</li>
+            </ul>
+            <div style="margin-top:1rem"><a href="#contact" class="btn">Choose Starter</a></div>
+          </div>
+          <div class="card" style="border-color:#235a5c;box-shadow:0 0 0 2px rgba(56,215,217,.12) inset">
+            <h3>Focused</h3>
+            <p class="muted">2× 60‑min / week</p>
+            <p><span class="price">£28</span> per lesson</p>
+            <ul class="list">
+              <li>Progress dashboard</li>
+              <li>Exam‑technique drills</li>
+              <li>Parent updates</li>
+            </ul>
+            <div style="margin-top:1rem"><a href="#contact" class="btn">Choose Focused</a></div>
+          </div>
+          <div class="card">
+            <h3>Exam Sprint</h3>
+            <p class="muted">4× 60‑min / week (short‑term)</p>
+            <p><span class="price">£25</span> per lesson</p>
+            <ul class="list">
+              <li>Intensive revision plan</li>
+              <li>Past‑paper marathons</li>
+              <li>Priority support</li>
+            </ul>
+            <div style="margin-top:1rem"><a href="#contact" class="btn">Choose Sprint</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Meet Your Tutor</h2>
+        <div class="grid grid-2" style="margin-top:1rem;align-items:center">
+          <div>
+            <p class="muted">Hi! I'm <strong>[Your Sister’s Name]</strong>, a UK medical student with top grades at GCSE and A‑Level (incl. A* in Biology & Chemistry). I specialise in turning tricky topics into simple steps and building repeatable exam strategies.</p>
+            <ul class="list">
+              <li>Lesson structure: recap → teach → practice → exam‑style questions</li>
+              <li>Resources: condensed notes, checklists, topic trackers</li>
+              <li>Tools: interactive whiteboard, question banks, spaced‑repetition</li>
+            </ul>
+            <div style="margin-top:1rem" class="inline">
+              <a class="btn" href="#contact">Book a free 15‑min call</a>
+              <a class="btn ghost" href="mailto:hello@pulseprep.co.uk">hello@pulseprep.co.uk</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Parent & Student Reviews</h3>
+            <div class="testimonial">
+              <p>“Clear explanations and targeted practice took my son from a 5 to an 8 in Chemistry.”</p>
+              <div class="name">— Parent, Year 11 (AQA)</div>
+            </div>
+            <div class="testimonial" style="margin-top:.7rem">
+              <p>“The weekly check‑ins and past‑paper drills made all the difference before mocks.”</p>
+              <div class="name">— Student, Year 13 (Edexcel)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+          <div class="faq-q">How do online lessons work? <span>＋</span></div>
+          <div class="faq-a">We use Zoom or Google Meet with an interactive whiteboard. Notes & homework are shared after each session.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you teach all boards? <span>＋</span></div>
+          <div class="faq-a">Yes — AQA, Edexcel (incl. IAL), and OCR. Lessons are aligned to your exact specification.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I try a lesson first? <span>＋</span></div>
+          <div class="faq-a">Absolutely. Book a free 15‑minute call. If it’s a good fit, we’ll schedule your first lesson right after.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do payments work? <span>＋</span></div>
+          <div class="faq-a">Pay weekly or in discounted monthly bundles. No long‑term contracts.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="muted">Tell us the subject(s), exam board and preferred times. We’ll reply within 24 hours.</p>
+        <form class="card" onsubmit="return mailtoSubmit(event)">
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" required placeholder="e.g. Aisha Khan" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" required placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="level">Level</label>
+              <select id="level" name="level" required>
+                <option value="GCSE">GCSE</option>
+                <option value="A‑Level">A‑Level</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="subjects">Subjects</label>
+              <input id="subjects" name="subjects" placeholder="e.g. AQA Chemistry, Edexcel Maths" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about targets, recent grades, topics, and ideal lesson times."></textarea>
+          </div>
+          <div class="inline">
+            <button class="btn" type="submit">Send enquiry</button>
+            <a class="btn ghost" href="https://wa.me/44XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:.6rem"><span class="mark"></span> PulsePrep <span style="opacity:.8">Tutoring</span></div>
+        <div class="muted">© <span id="year"></span> PulsePrep Tutoring. All rights reserved.</div>
+      </div>
+      <div style="text-align:right">
+        <a href="#subjects">Subjects</a> · <a href="#packages">Packages</a> · <a href="#about">About</a> · <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const nav = document.querySelector('nav ul');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.gap = '.2rem';
+      nav.style.padding = '.6rem 0';
+      nav.style.background = '#0b1323';
+      nav.style.border = '1px solid #18243c';
+      nav.style.borderRadius = '12px';
+      nav.style.position='absolute';
+      nav.style.right='1rem';
+      nav.style.top='60px';
+      nav.style.zIndex=60;
+    }
+
+    function mailtoSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const level = document.getElementById('level').value;
+      const subjects = document.getElementById('subjects').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nLevel: ${level}\nSubjects: ${subjects}\n\nMessage:\n${message}`);
+      const mail = `mailto:hello@pulseprep.co.uk?subject=New tutoring enquiry — ${encodeURIComponent(level)}&body=${body}`;
+      window.location.href = mail;
+      return false;
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-q').forEach(q=>{
+      q.addEventListener('click',()=>{
+        const a = q.nextElementSibling; const open = a.style.display==='block';
+        document.querySelectorAll('.faq-a').forEach(el=>el.style.display='none');
+        a.style.display = open ? 'none' : 'block';
+        q.querySelector('span').textContent = open ? '＋' : '—';
+      });
+    });
+  </script>
+</body>
+</html>
 
